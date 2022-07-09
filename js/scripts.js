@@ -44,7 +44,6 @@ const productosJSON=JSON.stringify(productos)
 localStorage.setItem("productos",productosJSON)
 
 
-
 /*Carrito y compra*/
 const productosHTML = document.getElementById("productos")
 const cantidadDeProductosHTML = document.getElementById("cantidadDeproductosEnElCarrito")
@@ -78,10 +77,19 @@ const agregarAlCarrito = (id) => {
     <hr class="col-12">
     </div>
     `
-    carrito.carritoDisplay=carritoHTML.innerHTML
+    carrito.carritoDisplay = carritoHTML.innerHTML
     totalSteamHTML.innerHTML = carrito.precioTotal
     totalRealHTML.innerHTML = carrito.precioTotalReal
-    alertPlaceholder.innerHTML = `<div class="alert alert-success alert-dismissible fixed-bottom" role="alert"> Agregaste ${producto.juego} al carrito! <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
+    Toastify({
+        text: `Agregaste ${producto.juego} al carrito`,
+        duration: 2000,
+        gravity: "bottom",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
+        },
+        }).showToast();
     const carritoJSON = JSON.stringify(carrito)
     localStorage.setItem("carrito",carritoJSON)
 }
@@ -98,6 +106,17 @@ const sacarDelCarrito = (id, idCarrito) => {
     totalRealHTML.innerHTML = carrito.precioTotalReal
     const carritoJSON = JSON.stringify(carrito)
     localStorage.setItem("carrito",carritoJSON)
+    Toastify({
+        text: `Sacaste ${producto.juego} del carrito`,
+        duration: 2000,
+        gravity: "bottom",
+        position: "left",
+        stopOnFocus: true,
+        style: {
+            background: "rgb(195,133,34)",
+            background: "linear-gradient(90deg, rgba(195,133,34,1) 0%, rgba(253,45,81,1) 100%)"
+        },
+        }).showToast();
 }
 
 
@@ -107,15 +126,35 @@ const comprar = () => {
     }else{
         document.getElementById("modal").innerHTML = `Felicidades, compraste jueguitos y gastaste $${carrito.precioTotalReal}`
         carritoHTML.innerHTML=null
-        cantidadDeProductosHTML.innerHTML=0
+        cantidadDeProductosHTML.innerHTML = 0
         carrito.cantidadDeProductos = 0
         totalSteamHTML.innerHTML = 0
         totalRealHTML.innerHTML = 0
         carrito.carritoDisplay=carritoHTML.innerHTML
-        carrito.precioTotal=0
-        carrito.precioTotalReal=0
+        carrito.precioTotal = 0
+        carrito.precioTotalReal = 0
         const carritoJSON = JSON.stringify(carrito)
         localStorage.setItem("carrito",carritoJSON)
+        
+        var duration = 15 * 500;
+        var animationEnd = Date.now() + duration;
+        var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+        
+        function randomInRange(min, max) {
+          return Math.random() * (max - min) + min;
+        }
+        
+        var interval = setInterval(function() {
+        var timeLeft = animationEnd - Date.now();
+        
+        if (timeLeft <= 0) {
+            return clearInterval(interval);
+        }
+        
+        var particleCount = 50 * (timeLeft / duration);
+        confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+        confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+        }, 250);
     }
 }
 
@@ -145,7 +184,7 @@ const ponerProductosEnHTML = (objeto) => {
         </div>`
     })
     document.getElementById("saludo").innerHTML=`<h1 class="text-center">SteameAR</h1>`
-    productosHTML.innerHTML=acumuladorDeHTML
+    productosHTML.innerHTML = acumuladorDeHTML
     cantidadDeProductosHTML.innerHTML = carrito.cantidadDeProductos
     carritoHTML.innerHTML = carrito.carritoDisplay
     totalSteamHTML.innerHTML = carrito.precioTotal
@@ -221,7 +260,7 @@ botonMayorAMenor.onclick = () => {
     acumuladorDeHTML = ""
     if(acumuladorDeNoFiltrados.length>=1){
         acumuladorDeNoFiltrados.sort(function (a,b) {
-            if (a.precio<b.precio){return 1}
+            if (a.precio < b.precio){return 1}
             if(a.precio>b.precio){return -1}
             else {return 0}
         })
