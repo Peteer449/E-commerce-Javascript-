@@ -1,48 +1,20 @@
 const impuestoGanancias = 0.35
 const impuestoPais = 0.3
-let productos = [{
-    id:1,
-    juego:"Call of duty",
-    precio: 1200,
-    descripcion:"Call of Duty® ofrece el descarnado realismo y la intensidad cinematográfica de las épicas batallas de la II Guerra Mundial como nunca antes: a través de los ojos de ciudadanos soldado y héroes olvidados de la alianza de naciones que ayudaron a conformar el curso de la historia moderna.",
-    foto:"./assets/imagenes/call of duty.jpg",
-    link:"https://store.steampowered.com/app/2620/Call_of_Duty/?l=spanish"
-},
-{
-    id:2,
-    juego:"Cyberpunk",
-    precio:2500,
-    descripcion:"Cyberpunk 2077 es un RPG de aventura y acción de mundo abierto ambientado en el futuro sombrío de Night City, una peligrosa megalópolis obsesionada con el poder, el glamur y las incesantes modificaciones corporales.",
-    foto:"./assets/imagenes/cyberpunk.jpeg",
-    link:"https://store.steampowered.com/app/1091500/Cyberpunk_2077/?l=spanish"
-},
-{
-    id:3,
-    juego:"Juanito y los clonosaurios",
-    precio:600,
-    descripcion: "Un parque de diversiones del futuro donde hay dinosaurios que vuelven a la vida con avanzadas tecnicas de clonacion.",
-    foto:"./assets/imagenes/juanito y los clonosaurios.jpg",
-    link:"https://www.youtube.com/watch?v=g5HA-OQssEw"
-},
-{
-    id:4,
-    juego:"Putting challenge",
-    precio:200,
-    descripcion: "ayy que lindo....",
-    foto:"./assets/imagenes/putting challenge.jpg",
-    link:"https://youtu.be/capTpivF8n0"
-},
-{
-    id:5,
-    juego:"God of war",
-    precio:5000,
-    descripcion:"Kratos ha dejado atrás su venganza contra los dioses del Olimpo y vive ahora como un hombre en los dominios de los dioses y monstruos nórdicos. En este mundo cruel e implacable debe luchar para sobrevivir… y enseñar a su hijo a hacerlo también.",
-    foto:"./assets/imagenes/god of war.jpg",
-    link:"https://store.steampowered.com/app/1593500/God_of_War/"
-}]
-const productosJSON=JSON.stringify(productos)
-localStorage.setItem("productos",productosJSON)
 
+let productos;
+const fetchAProductos = () => {
+    fetch("js/productos.json")
+    .then(response => response.json())
+    .then(response => {
+        productos = response
+        console.log(productos)
+        agregarPreciosReales()
+        ponerProductosEnHTML(productos)
+    })
+    .catch(err=>console.log(err))
+}
+
+fetchAProductos()
 
 /*Carrito y compra*/
 const productosHTML = document.getElementById("productos")
@@ -308,6 +280,28 @@ botonBorrarFiltro.onclick = () => {
 
 /*Termina filtro de precios*/
 
+/*function fechear(){
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'fe744b76afmshad39cac11e75dfdp107f8bjsn77dce6119f18',
+            'X-RapidAPI-Host': 'steam2.p.rapidapi.com'
+        }
+    };
 
-agregarPreciosReales()
-ponerProductosEnHTML(productos)
+    fetch('https://steam2.p.rapidapi.com/search/Counter/page/1', options)
+        .then(response => response.json())
+        .then(response => {
+            response.forEach( i => {
+                fetch('https://steam2.p.rapidapi.com/appDetail/'+i.appId, options)
+                .then(response => response.json())
+                .then(response => console.log(response))
+                .catch(err => console.error(err));
+        })})
+        .catch(err => console.error(err));
+        
+
+    }
+    console.log(fechear())*/
+
+
