@@ -37,4 +37,28 @@
   "descripcion":"Kratos ha dejado atrás su venganza contra los dioses del Olimpo y vive ahora como un hombre en los dominios de los dioses y monstruos nórdicos. En este mundo cruel e implacable debe luchar para sobrevivir… y enseñar a su hijo a hacerlo también.",
   "foto":"./assets/imagenes/god of war.jpg",
   "link":"https://store.steampowered.com/app/1593500/God_of_War/"
+},
+{
+  "id":6,
+  "juego":"Stray",
+  "precio":1100,
+  "descripcion": "Perdido, solo y separado de su familia, un gato callejero debe desentrañar un antiguo misterio para escapar de una ciberciudad olvidada y encontrar el camino a casa.",
+  "foto":"./assets/imagenes/stray.jpg",
+  "link":"https://store.steampowered.com/app/1332010/Stray/?l=spanish"
+},
+{
+  "id":7,
+  "juego":"Spider-man",
+  "precio":4999,
+  "descripcion": "En Marvel`s Spider-Man Remasterizado, la vida de Peter Parker se topa con la de Spider-Man en una historia original repleta de acción. Ponte en la piel de un Peter Parker veterano que ha pulido sus habilidades en la lucha contra el crimen y los villanos en la Nueva York de Marvel.",
+  "foto":"./assets/imagenes/spider-man.jpg",
+  "link":"https://store.steampowered.com/app/1817070/Marvels_SpiderMan_Remastered/"
+},
+{
+  "id":8,
+  "juego":"Fifa 23",
+  "precio":8999,
+  "descripcion": "EA SPORTS™ FIFA 23 lleva el juego del mundo al campo, con la tecnología HyperMotion 2 que ofrece una experiencia de juego aún más realista, tanto la FIFA World Cup™ masculina como la femenina que llegará al juego más adelante durante la temporada, la incorporación de equipos femeninos, funciones de juego cruzado y mucho más. Disfruta de una autenticidad única con más de 19 000 jugadores, más de 700 equipos, 100 estadios y más de 30 ligas en FIFA 23.",
+  "foto":"./assets/imagenes/fifa.jpg",
+  "link":"https://store.steampowered.com/app/1811260/FIFA_23/"
 }]

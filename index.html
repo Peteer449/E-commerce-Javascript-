@@ -12,8 +12,32 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">SteamAR</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Pricing</a>
+          </li>
+        </ul>
+        <span class="navbar-text">
+          <button class="btn btn-lg btn-light border-2 border-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Carrito <span class="badge bg-dark text-white ms-1 rounded-pill" id="cantidadDeproductosEnElCarrito">0</span></button>
+        </span>
+      </div>
+    </div>
+  </nav>
   <!--Carrito-->
-  <button class="btn btn-lg btn-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Carrito <span class="badge bg-dark text-white ms-1 rounded-pill" id="cantidadDeproductosEnElCarrito">0</span></button>
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
         <h5 id="offcanvasRightLabel">Tu carrito</h5>
@@ -87,12 +111,31 @@
     </div>
     
     <!--Filtro-->
-    <input type="number" name="maximo" id="maximo" placeholder="Precio maximo" class="bg-white mx-2 text-dark">
+    <input type="number" name="maximo" id="maximo" placeholder="Precio maximo (Steam)" class="bg-white mx-2 text-dark">
     <button class="btn btn-danger" id="boton--borrar-filtro">Borrar filtro</button>
   </div>
   
   <!--Productos-->
   <div id="productos" class="text-center my-5 d-flex flex-wrap mx-3 gap-3 justify-content-center"></div>
+
+  <!--Footer-->
+  <div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+      <p class="col-md-4 mb-0 text-white">© 2022 SteamAR, Inc</p>
+  
+      <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+      </a>
+  
+      <ul class="nav col-md-4 justify-content-end">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-white">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-white disabled">Features</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-white disabled">Pricing</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-white disabled">FAQs</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-white disabled">About</a></li>
+      </ul>
+    </footer>
+  </div>
 
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>

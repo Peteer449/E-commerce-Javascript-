@@ -138,13 +138,13 @@ let acumuladorDeHTML=''
 
 const agregarPreciosReales = () => {
     productos.forEach(element => {
-        element.precioReal = element.precio * impuestoPais + element.precio * impuestoGanancias + element.precio
+        element.precioReal = Math.round(element.precio * impuestoPais + element.precio * impuestoGanancias + element.precio)
     })
 }
 
 const ponerProductosEnHTML = (objeto) => {
     objeto.forEach(element =>{
-        acumuladorDeHTML += `<div id="${element.id}" class="col-3 d-flex flex-wrap border border-dark border-3 rounded-2 p-3">
+        acumuladorDeHTML += `<div id="${element.id}" class="juego col-3 d-flex flex-wrap border border-dark border-3 rounded-2 p-3">
             <h2 class="row-4 col-12">${element.juego}</h2>
             <img src="${element.foto}" alt="foto de ${element.juego}" style=" height:200px; width:100%; object-fit:contain">
             <div class="row-4 col-12">
@@ -275,33 +275,28 @@ botonBorrarFiltro.onclick = () => {
     acumuladorDeNoFiltrados=[]
     filtroMaximo.value=""
     acumuladorDeHTML=""
-    ponerProductosEnHTML(productos)
+    if(ordenados.innerHTML=="Mayor a menor"){
+        productos.sort(function (a,b) {
+            if (a.precio<b.precio){return 1}
+            if(a.precio>b.precio){return -1}
+            else {return 0}
+        })
+        ponerProductosEnHTML(productos)
+    }else if(ordenados.innerHTML == "Menor a mayor"){
+        productos.sort(function (a,b) {
+            if (a.precio>b.precio){return 1}
+            if(a.precio<b.precio){return -1}
+            else {return 0}
+        })
+        ponerProductosEnHTML(productos)
+    }else{
+        productos.sort(function (a,b) {
+            if (a.id>b.id){return 1}
+            if(a.id<b.id){return -1}
+            else {return 0}
+        })
+        ponerProductosEnHTML(productos)
+    }
 }
 
 /*Termina filtro de precios*/
-
-/*function fechear(){
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': 'fe744b76afmshad39cac11e75dfdp107f8bjsn77dce6119f18',
-            'X-RapidAPI-Host': 'steam2.p.rapidapi.com'
-        }
-    };
-
-    fetch('https://steam2.p.rapidapi.com/search/Counter/page/1', options)
-        .then(response => response.json())
-        .then(response => {
-            response.forEach( i => {
-                fetch('https://steam2.p.rapidapi.com/appDetail/'+i.appId, options)
-                .then(response => response.json())
-                .then(response => console.log(response))
-                .catch(err => console.error(err));
-        })})
-        .catch(err => console.error(err));
-        
-
-    }
-    console.log(fechear())*/
-
-
