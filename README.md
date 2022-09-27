@@ -3,7 +3,7 @@
 
 ## Demo link:
 
-Access my site at [SteamAR](https://peteer449.github.io/E-commerce-Javascript-/)
+Access my site at [SteamAR](https://peteer449.github.io/SteamAR/)
 
 ## About the app
 
